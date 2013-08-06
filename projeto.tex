@@ -7,7 +7,7 @@
 \title{Projeto de mestrado\\
        \textbf{Tractografia por evolução de frentes levando em conta distribuições de probabilidade de incerteza}}
 \author{Rafael Reggiani Manzo\\
-        \textbf{Supervisor:} Prof. Doutor Marcel Parolin Jackowski}
+        \textbf{Orientador:} Prof. Doutor Marcel Parolin Jackowski}
 
 \begin{document}
 
@@ -19,11 +19,24 @@
 
 \chapter{Introdução}
   \section{Motivações}
+  A tractografia é uma técnica computacional que busca através de várias abordagens diferentes reconstruir as fibras da substância branca do cérebro (fibras axonais envoltas em mielina). Sendo a única técnica não invasiva para estudo \textit{in vivo} do cérebro humano e uma das ferramentas mais promissoras para auxiliar em seu estudo.
   
+  Esta técnica utiliza como fonte de dados imagens de ressonância magnética. Em virtude da natureza da substância branca onde a difusão das moléculas de água é muito mais intensa no sentido de suas fibras. Propriedade chamada de anisotropia.
+  
+  Por outro lado, a ressonância magnética é sujeita a ruídos e não representa com precisão o cruzamento de duas fibras. Dessa forma, foram desenvolvidas ao longo do tempo diversas abordagens à tractografia buscando minimizar estes problemas para representar com a maior fidelidade possível a fisiologia humana.
   
   \section{Objetivos}
+  Estas abordagens basicamente variam em locais ou globais, determinísticas ou probabilísticas e quais aproximações são feitas. 
+  
+  Por exemplo, uma forma forma de tractografia local e determinística abordada em um trabalho anterior, consistia em aplicar a técnica de integração numérica de Runge-Kutta até que a difusividade fosse muito baixa ou uma fronteira do conjunto de dados fosse alcançada, utilizando interpolação trilinear para aproximar a difusividade entre voxels.
+  
+  O exemplo acima então é incapaz de lidar com o cruzamento de fibras os ruídos da imagem eram apenas minimizados com a interpolação feita.
+  
+  Tentando lidar melhor com estes problemas, o objetivo final é chegar a uma abordagem global que leve em conta dados probabilísticos. No caso, desenvolver a tractografia por evolução de frentes levando em conta a distribuição de probabilidade da incerteza em cada voxel como um limiar para identificar se a propagação de uma fibra deve seguir determinado caminho.
+  
   \section{Desafios}
-
+  
+  
 \chapter{Conceitos e tecnologias a estudar}
 
 \chapter{Atividades esperadas}
