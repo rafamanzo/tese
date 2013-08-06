@@ -35,7 +35,11 @@
   Tentando lidar melhor com estes problemas, o objetivo final é chegar a uma abordagem global que leve em conta dados probabilísticos. No caso, desenvolver a tractografia por evolução de frentes levando em conta a distribuição de probabilidade da incerteza em cada voxel como um limiar para identificar se a propagação de uma fibra deve seguir determinado caminho.
   
   \section{Desafios}
+  O primeiro grande desafio desta abordagem à tractografia está na sua teoria, que envolve a equação de Hamilton-Jacobi. Portanto, equações diferenciais parciais e uma formulação de mecânica clássica equivalente à de Newton, mas com conceitos novos e propriedades diferentes.
   
+  Em seguida, esta técnica exige imagens de ressonância mais complexas que as usuais por tensores de difusão (\textit{DTI}). Para obter a distribuição de probabilidade da incerteza em cada voxel, muito mais informação é necessária. Então, são utilizadas imagens de ressonância, imagens por espectro de difusão (DSI).
+  
+  Por fim, tudo isto exigirá muito processamento e memória. Então, para garantir a aplicabilidade da técnica a ser desenvolvida na prática, será um desafio paralelizar ao máximo todas as etapas do algoritmo e ainda minimizar o consumo de memória.
   
 \chapter{Conceitos e tecnologias a estudar}
 
