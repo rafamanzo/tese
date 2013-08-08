@@ -3,6 +3,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage{lmodern}
 \usepackage[brazil]{babel}
+\usepackage{amsfonts}
 
 \title{Projeto de mestrado\\
        \textbf{Tractografia por evolução de frentes levando em conta distribuições de probabilidade de incerteza}}
@@ -45,8 +46,26 @@
   
 \chapter{Conceitos e tecnologias a estudar}
   \section{Equações diferenciais parciais}
+    Equações diferenciais parciais (EDPs) são equações de funções desconhecidas no $\mathbb{R}^{n}$, $n \geq 1$, e suas derivadas parciais. Onde o caso no $n = 1$, são as já conhecidas equações diferenciais ordinárias (EDOs).
+    
+    Estas equações são úteis para modelar termodinâmica, mecânica dos fluídos, ondas e muitas outras aplicações.
   
     \subsection{Equação de Hamilton-Jacobi}
+    A equação de Hamilton-Jacobi (\ref{eq:hamilton-jacobi}) é uma EDP, conforme descrita abaixo. É uma formulação da mecânica clássica equivalente à de Newton, . É a única formulação da mecânica onde uma partícula pode ser representada como uma onda.
+    
+    \begin{equation} \label{eq:hamilton-jacobi}
+      H + \frac{\partial S}{\partial t} = 0
+    \end{equation}
+    
+    Com:
+    
+    \begin{itemize}
+      \item $H = H(s_{1}, ..., s_{n}, \frac{\partial S}{\partial s_{1}}, ..., \frac{\partial S}{\partial s_{n}})$
+      \item $S = S(s_{1}, ..., s_{n}, t)$
+    \end{itemize}
+    
+    Onde, $s_{i}$, $1 \leq i \geq n$, são as $n$ coordenadas generalizadas no espaço e $t$ o tempo.
+    
     
   \section{Imagens por espectro de difusão}
   
