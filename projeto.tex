@@ -99,22 +99,32 @@
   \section{Otimizações de performance}
   São esperados grandes quantidades de dados e processamentos repetitivos sobre estes dados para, por fim, alcançar a abordagem à tractografia pretendida. Então, sem dúvida, irá chegar um momento onde para ter algo viável no uso prático em que otimizações serão necessárias.
   
-  Uma forma que já se provou eficiente foi a programação para GPGPU (General Programming on the Graphics Processing Unit), que fornece um ambiente altamente paralelizado e técnicas para lidar com grandes quantidades de dados. Porém, isto depende da adequação do problema ao ambiente, que será um dos objetos de estudo.
+  Uma forma que já se provou eficiente foi a programação para GPGPU (\textit{General Programming on the Graphics Processing Unit}), que fornece um ambiente altamente paralelizado e técnicas para lidar com grandes quantidades de dados. Porém, isto depende da adequação do problema ao ambiente, que será um dos objetos de estudo.
   
   Esta dependência de adequação ao ambiente se deve a diversos fatores dentre os quais os principais são a transferência de dados para o processador gráfico que tem de passar pelo PCI além da arquitetura dos núcleos de processamento da placa gráfica que foram feitos para tarefas repetitivas. Ou seja, desvios condicionais, por exemplo, reduzem a performance do processamento.
 
 \chapter{Atividades esperadas}
+  Basicamente, todas as atividades descritas nas seções a seguir dizem respeito a implementações no MedSquare, que, como foi mencionado antes, será a plataforma utilizada como base para as implementações devido à estrutura que este já fornece.
+
   \section{Leitura de DSI}
+  O MedSquare já é capaz de ler, dentre outras, imagens de ressonância. Porém, será preciso adaptar sua estrutura de leitura para reconhecer um DSI e carregá-la adequadamente.
   
   \section{Implementação de tractografia probabilística convencional}
+  Com uma DSI carregada, uma boa forma de compreender a fundo a tractografia probabilística será implementando-a. Com isso, o MedSquare também ganhará uma forma bastante robusta de tractografia.
   
   \section{Implementação de evolução de frentes convencional}
-  
+  Novamente para compreender a fundo um método, implementá-lo é um bom caminho além de novamente adicionar uma nova funcionalidade ao MedSquare.
+
   \section{Modificações na função de custos da evolução de frentes}
-  
+  Tendo compreendido a fundo tanto a tractografia probabilística quanto a evolução de frentes, em seguida, será o momento de dar o passo para o que deve ser o diferencial do estudo, unindo as duas abordagens.
+
+  Uma das formas de realizar isto, pode ser modificando a função de custos da evolução de frentes para que esta leve em conta as distribuições de probabilidade. O caminho deve ser o de ajustar a função de forma a atribuir custos altos para caminhos com mais incerteza.
+
   \section{Comparações práticas entre as três técnicas}
+  Como consequência, um estudo dos resultados de cada método para imagens reais, possibilitará aferir se a suposição de que a união de ambas as técnicas trará maior confiabilidade à tractografia.
   
   \section{Otimização da evolução de frentes modificada}
+  Por fim, para permitir um uso prático da metodologia desenvolvida, será importante otimizar sua implementação, se possível com GPGPU.
 
 \chapter{Resultados e produtos esperados}
   \section{Descrição detalhada de uma nova abordagem à tractografia}
