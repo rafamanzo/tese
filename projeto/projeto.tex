@@ -34,7 +34,7 @@ Por fim, após dominar ambas as técnicas, será possível realizar a combinaç�
   
   Esta técnica utiliza como fonte de dados imagens de ressonância magnética. Em virtude da natureza da substância branca onde a difusão das moléculas de água é muito mais intensa no sentido de suas fibras. Propriedade chamada de anisotropia.
   
-  Por outro lado, a ressonância magnética é sujeita a ruídos e não representa com precisão o cruzamento de duas fibras. Dessa forma, foram desenvolvidas ao longo do tempo diversas abordagens à tractografia buscando minimizar estes problemas para representar com a maior fidelidade possível a fisiologia humana.
+  Por outro lado, a ressonância magnética é sujeita a ruídos e não representa com precisão o cruzamento de duas fibras . Dessa forma, foram desenvolvidas ao longo do tempo diversas abordagens à tractografia buscando minimizar estes problemas para representar com a maior fidelidade possível a fisiologia humana.
   
   \section{Objetivos}
   Estas abordagens basicamente variam em locais ou globais, determinísticas ou probabilísticas e quais aproximações são feitas. 
@@ -44,11 +44,13 @@ Por fim, após dominar ambas as técnicas, será possível realizar a combinaç�
   O exemplo acima, então, é incapaz de lidar com o cruzamento de fibras, apenas seguia uma das fibras no melhor dos casos. Além disto, os ruídos da imagem eram apenas minimizados com a interpolação feita.
   
   Tentando lidar melhor com estes problemas, o objetivo final é chegar a uma abordagem global que leve em conta dados probabilísticos. No caso, desenvolver a tractografia por evolução de frentes levando em conta a distribuição de probabilidade da incerteza em cada voxel como um limiar para identificar se a propagação de uma fibra deve seguir determinado caminho.
+
+  Trabalhos neste sentido já foram desenvolvidos anteriormente\footnote{\ref{ch: biblio}: \textit{Campbell et al., 2005} e \textit{Decoteaux \& deriche. 2008}} com mostrando resultados positivos, porém usando um método probabilístico mais simples, o QBall\footnote{\ref{ch: biblio}: Joahnsen-Berg \& Behrens, 2009}, que baseia-se apenas na distribuição de probabilidade da direção em cada voxel, sem informações sobre a incerteza de cada medição.
   
   \section{Desafios}
   O primeiro grande desafio desta abordagem à tractografia está na sua teoria, que envolve a equação de Hamilton-Jacobi. Esta consiste de equações diferenciais parciais e uma formulação de mecânica clássica equivalente à de Newton, mas com conceitos novos e propriedades diferentes.
   
-  Em seguida, esta técnica exige imagens de ressonância mais complexas que as usuais por tensores de difusão (\textit{DTI}). Para obter a distribuição de probabilidade da incerteza em cada voxel, muito mais informação é necessária. Então, são utilizadas imagens de ressonância por espectro de difusão (DSI).
+  Em seguida, esta técnica exige imagens de ressonância mais complexas que as usuais por tensores de difusão (\textit{DTI}). Para obter a distribuição de probabilidade da incerteza em cada voxel, muito mais informação é necessária. Então, são utilizadas imagens de ressonância por espectro de difusão\footnote{\ref{ch: biblio}: Hagmann et al., 2006} (DSI).
   
   Como este é um tema com alto apelo visual, certamente será preciso dedicar um esforço considerável para dominar bibliotecas gráficas como a \textit{VTK}. O que já se provou um desafio no trabalho anterior já mencionado.
   
@@ -152,12 +154,16 @@ Espera-se que a união da tractografia probabilística com a evolução de frent
 
 Assim, justificando todo o trabalho com estudos teóricos e implementações de software, como sendo os meios para alcançar um meio de comparar quais os ganhos ou perdas que esta metodologia pode trazer.
 
-\chapter{Referências Bibliográficas}
+\chapter{Referências Bibliográficas} \label{ch: biblio}
 
 \begin{itemize}
-  \item JOAHNSEN-BERG, Heidi; BEHRENS, Timothy E. J. \textit{Diffusion MRI};
+  \item JOAHNSEN-BERG, Heidi; BEHRENS, Timothy E. J. \textit{Diffusion MRI}. 1st edition. May 2009;
   \item JACKOWSKI, Marcel; KAOD, Chiu Yen; QIUA, Maolin; CONSTABLE, R. Todd; STAIB, Lawrence H. \textit{White matter tractography by anisotropic wavefront evolution and diffusion tensor imaging}. Med Image Anal. 2005 October;
   \item Hagmann P, Jonasson L, Maeder P, Thiran JP, van Wedeen J, Meuli R. Understanding diffusion MR imaging techniques: from scalar diffusion-weighted imaging to diffusion tensor imaging and beyond. RadioGraphics 2006;26(suppl 1):S205–S223.
+  \item DESCOTEAUX, Maxime; DERICHE, Rachid. \textit{High Angular Resolution Diffusion MRI Segmentation Using
+Region-Based Statistical Surface Evolution}. J Math Imaging Vis. 2008;
+  \item CAMPBELL, Jennifer S. W.; SIDDIQI, Kaleem; RYMAR, Vladmir V.; SADIKOT, Abbas F.; PIKE, G. Bruce. \textit{Flow-based fiber tracking with diffusion tensor and q-ball data: Validation and comparison to principal diffusion direction techniques}. NeuroImage 27 (2005) 725 – 736;
+  \item Parker, G., Wheeler-Kingshott, C., Barker, G., 2002a. Estimating distributed anatomical connectivity using fast marching methods and diffusion tensor imaging. IEEE Trans. Med. Imaging 21 (5), 505 – 512.
 \end{itemize}
 
 \end{document}
