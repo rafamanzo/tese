@@ -21,7 +21,7 @@
 
 \chapter{Introdução}
   \section{Motivações}
-  A tractografia é uma técnica computacional que busca através de várias abordagens diferentes reconstruir as fibras da substância branca do cérebro (fibras axonais envoltas em mielina). Sendo a única técnica não invasiva para observação \textit{in vivo} do cérebro humano e uma das ferramentas mais promissoras para auxiliar em seu estudo.
+  A tractografia é uma técnica computacional para exploração de imagens médicas que busca através de várias abordagens diferentes reconstruir as fibras da substância branca do cérebro (fibras axonais envoltas em mielina). Sendo a única técnica não invasiva para observação \textit{in vivo} do cérebro humano e uma das ferramentas mais promissoras para auxiliar em seu estudo.
   
   Esta técnica utiliza como fonte de dados imagens de ressonância magnética. Em virtude da natureza da substância branca onde a difusão das moléculas de água é muito mais intensa no sentido de suas fibras. Propriedade chamada de anisotropia.
   
@@ -32,14 +32,14 @@
   
   Por exemplo, uma forma forma de tractografia local e determinística abordada em um trabalho anterior, consistia em aplicar a técnica de integração numérica de Runge-Kutta até que a difusividade fosse muito baixa ou uma fronteira do conjunto de dados fosse alcançada, utilizando interpolação trilinear para aproximar a difusividade entre voxels.
   
-  O exemplo acima então é incapaz de lidar com o cruzamento de fibras os ruídos da imagem eram apenas minimizados com a interpolação feita.
+  O exemplo acima, então, é incapaz de lidar com o cruzamento de fibras, apenas seguia uma das fibras no melhor dos casos. Além disto, os ruídos da imagem eram apenas minimizados com a interpolação feita.
   
   Tentando lidar melhor com estes problemas, o objetivo final é chegar a uma abordagem global que leve em conta dados probabilísticos. No caso, desenvolver a tractografia por evolução de frentes levando em conta a distribuição de probabilidade da incerteza em cada voxel como um limiar para identificar se a propagação de uma fibra deve seguir determinado caminho.
   
   \section{Desafios}
-  O primeiro grande desafio desta abordagem à tractografia está na sua teoria, que envolve a equação de Hamilton-Jacobi. Portanto, equações diferenciais parciais e uma formulação de mecânica clássica equivalente à de Newton, mas com conceitos novos e propriedades diferentes.
+  O primeiro grande desafio desta abordagem à tractografia está na sua teoria, que envolve a equação de Hamilton-Jacobi. Esta consiste de equações diferenciais parciais e uma formulação de mecânica clássica equivalente à de Newton, mas com conceitos novos e propriedades diferentes.
   
-  Em seguida, esta técnica exige imagens de ressonância mais complexas que as usuais por tensores de difusão (\textit{DTI}). Para obter a distribuição de probabilidade da incerteza em cada voxel, muito mais informação é necessária. Então, são utilizadas imagens de ressonância, imagens por espectro de difusão (DSI).
+  Em seguida, esta técnica exige imagens de ressonância mais complexas que as usuais por tensores de difusão (\textit{DTI}). Para obter a distribuição de probabilidade da incerteza em cada voxel, muito mais informação é necessária. Então, são utilizadas imagens de ressonância por espectro de difusão (DSI).
   
   Como este é um tema com alto apelo visual, certamente será preciso dedicar um esforço considerável para dominar bibliotecas gráficas como a \textit{VTK}. O que já se provou um desafio no trabalho anterior já mencionado.
   
@@ -52,7 +52,9 @@
     Estas equações são úteis para modelar termodinâmica, mecânica dos fluídos, ondas e muitas outras aplicações.
   
     \subsection{Equação de Hamilton-Jacobi}
-    A equação de Hamilton-Jacobi (\ref{eq:hamilton-jacobi}) é uma EDP, conforme descrita abaixo. É uma formulação da mecânica clássica equivalente à de Newton, útil para encontrar quantidades de movimento conservadas em um sistema mecânico. É a única formulação da mecânica onde uma partícula pode ser representada como uma onda.
+    A equação de Hamilton-Jacobi consiste de uma EDP, conforme definida abaixo (\ref{eq:hamilton-jacobi}).
+
+    É uma formulação da mecânica clássica equivalente à de Newton, útil para encontrar quantidades de movimento conservadas em um sistema mecânico. Sendo a única formulação da mecânica onde uma partícula pode ser representada como uma onda.
     
     Ela é definida como: 
 
@@ -80,7 +82,7 @@
   \section{Tractografia probabilística}
   Esta forma de tractografia se baseia em duas distribuições de probabilidade. Uma chamada de dODF (\textit{diffusion Orientation Distribution Function}) é a distribuição de probabilidade, já mencionada, de uma fibra seguir determinada direção em um voxel.
   
-  A segunda uODF (\textit{uncertainty Orientation Distribuition Function}) quantifica a incerteza sobre a dODF. Utilizando ambas em conjunto é possível definir limiares para propagações de fibras, lidando melhor com ruídos e cruzamentos de fibras.
+  A segunda, uODF (\textit{uncertainty Orientation Distribuition Function}), quantifica a incerteza sobre a dODF. Utilizando ambas em conjunto, é possível definir limiares para propagações de fibras, lidando melhor com ruídos e cruzamentos de fibras.
   
   \section{Bibliotecas gráficas}
   Como o produto final são imagens, ao invés de desenvolver toda a estrutura de leitura de imagens complexas e exibição de elementos tridimensionais sobre estas imagens, como cilindros representando as fibras do corpo, é coerente aproveitar um software livre já com suporte a todas estas funcionalidades.
