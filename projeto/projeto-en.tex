@@ -34,6 +34,26 @@ To finalize, after dominate both techniques, it'll be possible to make the descr
 
   On the other hand, the magnetic resonance is subject to noise and it doesn't represents with precision the fiber crossing. So, over time, were developed many approaches to tractography aiming to reduce these problems and to represent the human physiology accurately.
 
+  \section{Objectives}
+  These approaches basically vary between local and global, deterministic and probabilistic and which approximations are made.
+
+  For example, a form of local and deterministic tractography addressed in a previous work consisted on the application of the Runge-Kutta numerical integration until the diffusivity was very low or the edge of the dataset was reached, using trilinear interpolation.
+
+  The example above is incapable to deal with the fiber crossing, it only follows one of the fibers in the best case. Furthermore, the image noises were just minimized by the interpolation.
+
+  Trying to deal with these problems, the final objective is to find an global approach that takes into account probabilistic data. In this case, to develop a front evolution tractography taking into account the uncertainty probability distribution for each voxel as a threshold to determine if the fiber propagation should follow a path.
+
+  Previous works on that line where developed \footnote{\ref{ch: biblio}: \textit{Campbell et al., 2005} and \textit{Decoteaux \& Deriche. 2008}} leading to positive results, but using a simpler probabilistic method, the QBall\footnote{\ref{ch: biblio}: Joahnsen-Berg \& Behrens, 2009}, which is based only on the direction probability for each voxel without information about the uncertainty for each measurement.
+
+  \section{Challenges}
+  The first big challenge for this tractography approach resides in its theory, which involves the Hamilton-Jacobi equation. This consists of partial differential equations and a classical mechanics formulation equivalent to the Newton's one, but with new concepts and different properties.
+
+  Following, this technique demands resonance images more complex than the usual diffusion tensor (DTI). To obtain the uncertainty probability distribution for each voxel, a lot more information is needed. So, it uses diffusion spectrum images\footnote{\ref{ch: biblio}: Hagmann et al., 2006} (DSI).
+
+  As this is one theme with high visual appeal, certainly it'll be necessary to dedicate a considerable effort to learn graphic libraries such as the VTK.
+
+  Lastly, all this will demand lots of processing and memory. So, to make sure of the practical applicability of the technique to be developed, it'll be a challenge to parallelize as much as possible as the steps of the algorithm and, also minimize the consumed memory.
+  
 \chapter{References} \label{ch: biblio}
 
 \begin{itemize}
