@@ -106,6 +106,13 @@ To finalize, after dominate both techniques, it'll be possible to make the descr
 
   In the beginning there is just the initial point on the front. Then, are calculated all the cost function values for every point in the front neighborhood. The point with the minimal cost will be included in the front for the next iteration.
 
+  \section{Performance optimizations}
+  Are expected large amounts of data and repetitive processing over this data for, therefore, the pretended approach to tractography. Thus, without doubts, there will come the moment where, in order to have something feasible for practical use, optimizations will be necessary.
+
+  A way has been already proved it's efficiency is the GPGPU (General Programming on the Graphics processing Unit), which provides an highly parallelized environment and techniques to deal with large amounts of data. However, this depends on the problem adequacy to this environment, which will be one of the study objects.
+
+  This dependency to environment adequacy is due to various factors among which the main ones are the data transference to the graphics processor through the PCI bus, besides it's processing cores architecture that were designed to repetitive tasks. It is, conditional branches compromises it's performance.
+
 \chapter{References} \label{ch: biblio}
 
 \begin{itemize}
