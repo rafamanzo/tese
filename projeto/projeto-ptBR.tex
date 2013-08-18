@@ -103,9 +103,9 @@ Por fim, após dominar ambas as técnicas, será possível realizar a combinaç�
   \section{Evolução de frentes}
   A evolução de frentes é uma abordagem à tractografia que busca o caminho de maior difusividade ligando dois pontos na imagem. Com este objetivo, ela sempre considera a difusividade global em detrimento da local. Isto é útil para minimizar ruídos da imagem, mas tem o lado negativo de necessitar de um ponto de destino.
   
-  Em linhas gerais o algoritmo consiste em sucessivamente expandir, por meio de uma função de custos para atingir cada ponto, um conjunto de pontos, chamado de frente, até que não exista mais ponto algum na imagem fora deste conjunto.
+  Em linhas gerais, o algoritmo consiste em sucessivamente expandir, por meio de uma função de custos para atingir cada ponto, um conjunto de pontos, chamado de frente, até que não exista mais ponto algum na imagem fora deste conjunto.
   
-  No início apenas o ponto inicial está na frente. Então são calculados os valores de função de custo para todos os pontos vizinhos à frente. O ponto de menor custo passará a fazer parte da frente na próxima iteração.
+  No início apenas o ponto inicial está na frente. Então, são calculados os valores de função de custo para todos os pontos vizinhos à frente. O ponto de menor custo passará a fazer parte da frente na próxima iteração.
   
   \section{Otimizações de performance}
   São esperados grandes quantidades de dados e processamentos repetitivos sobre estes dados para, por fim, alcançar a abordagem à tractografia pretendida. Então, sem dúvida, irá chegar um momento onde para ter algo viável no uso prático em que otimizações serão necessárias.
