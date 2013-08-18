@@ -60,6 +60,26 @@ To finalize, after dominate both techniques, it'll be possible to make the descr
 
   These equations are useful to model thermodynamics, fluids mechanic, waves and lots more.
 
+  \subsection{Hamilton-Jacobi Equation}
+  The Hamilton-Jacobi equation consists on an PDE, as described below (\ref{eq:hamilton-jacobi}).
+
+  It's an classical mechanics formulation equivalent to Newton's one, useful on finding conserved movement quantities on a mechanics system. It's the only formulation for the mechanics where a particle can be described as a wave.
+
+  It's defined as:
+
+  \begin{equation} \label{eq:hamilton-jacobi}
+    H + \frac{\partial S}{\partial t} = 0
+  \end{equation}
+  
+  With:
+  
+  \begin{itemize}
+    \item $H = H(s_{1}, ..., s_{n}, \frac{\partial S}{\partial s_{1}}, ..., \frac{\partial S}{\partial s_{n}})$
+    \item $S = S(s_{1}, ..., s_{n}, t)$
+  \end{itemize}
+  
+  Where, $s_{i}$, $1 \leq i \leq n$, are the $n$ generalized coordinates in the space and $t$ the time.
+
 \chapter{References} \label{ch: biblio}
 
 \begin{itemize}
