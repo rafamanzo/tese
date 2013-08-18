@@ -91,6 +91,14 @@ To finalize, after dominate both techniques, it'll be possible to make the descr
   This form of tractography is based on two probability distributions. One called dODF (diffusion Orientation Distribution Function) is the previous mentioned probability distribution of one fiber to follow a direction.
 
   The second one, uODF (uncertainty Orientation Distribution Function), quantifies the uncertainty of dODF. Using both together, it's possible to define thresholds for the fiber propagation, better dealing with noises and the fiber crossings.
+
+  \section{Graphics libraries}
+  As the final product are images, instead of developing all the structure for complex images reading and for displaying three-dimensional over the images, like cylinders representing the body fibers, is coherent to take advantage of an free software that already provides all these features.
+
+  In the case, this software would be the MedSquare\footnote{\url{http://ccsl.ime.usp.br/medsquare/}}. Therefore, there will be an learning curve for it's architecture and the graphics libraries that are used on various tasks.
+
+  Like GDCMfootnote{\url{http://gdcm.sourceforge.net/}} for DICOM reading or the VTK\footnote{\url{http://www.vtk.org/}} for three dimensional graphics generation. And others like Qt\footnote{\url{http://qt.digia.com/}} and ITK\footnote{\url{http://www.itk.org/}}.
+  
 \chapter{References} \label{ch: biblio}
 
 \begin{itemize}
