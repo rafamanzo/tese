@@ -87,6 +87,10 @@ To finalize, after dominate both techniques, it'll be possible to make the descr
 
   Yet in this contrast between DTI and DSI, while the first one for each image voxel gives an three-dimensional tensor, the DSI, for each voxel, gives an uncertainty probability distribution for each direction, thus giving much more details and precision for the tractography.
 
+  \section{Probabilistic tractography}
+  This form of tractography is based on two probability distributions. One called dODF (diffusion Orientation Distribution Function) is the previous mentioned probability distribution of one fiber to follow a direction.
+
+  The second one, uODF (uncertainty Orientation Distribution Function), quantifies the uncertainty of dODF. Using both together, it's possible to define thresholds for the fiber propagation, better dealing with noises and the fiber crossings.
 \chapter{References} \label{ch: biblio}
 
 \begin{itemize}
