@@ -98,7 +98,14 @@ To finalize, after dominate both techniques, it'll be possible to make the descr
   In the case, this software would be the MedSquare\footnote{\url{http://ccsl.ime.usp.br/medsquare/}}. Therefore, there will be an learning curve for it's architecture and the graphics libraries that are used on various tasks.
 
   Like GDCMfootnote{\url{http://gdcm.sourceforge.net/}} for DICOM reading or the VTK\footnote{\url{http://www.vtk.org/}} for three dimensional graphics generation. And others like Qt\footnote{\url{http://qt.digia.com/}} and ITK\footnote{\url{http://www.itk.org/}}.
-  
+
+  \section{Front evolution}
+  The front evolution is an approach to tractography that searches the path of most diffusivity connecting two points in the image. With this objective, it always consider the global diffusivity on detriment of the local diffusivity. This is useful on minimizing the image noises, but has the downside of requiring an destination point.
+
+  In general lines, the algorithm consists on successively expanding, through a cost function to reach each point, a set of points, called front, until there is no more points on the image outside of this set.
+
+  In the beginning there is just the initial point on the front. Then, are calculated all the cost function values for every point in the front neighborhood. The point with the minimal cost will be included in the front for the next iteration.
+
 \chapter{References} \label{ch: biblio}
 
 \begin{itemize}
