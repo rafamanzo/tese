@@ -60,25 +60,32 @@ To finalize, after dominate both techniques, it'll be possible to make the descr
 
   These equations are useful to model thermodynamics, fluids mechanic, waves and lots more.
 
-  \subsection{Hamilton-Jacobi Equation}
-  The Hamilton-Jacobi equation consists on an PDE, as described below (\ref{eq:hamilton-jacobi}).
+    \subsection{Hamilton-Jacobi Equation}
+    The Hamilton-Jacobi equation consists on an PDE, as described below (\ref{eq:hamilton-jacobi}).
 
-  It's an classical mechanics formulation equivalent to Newton's one, useful on finding conserved movement quantities on a mechanics system. It's the only formulation for the mechanics where a particle can be described as a wave.
+    It's an classical mechanics formulation equivalent to Newton's one, useful on finding conserved movement quantities on a mechanics system. It's the only formulation for the mechanics where a particle can be described as a wave.
 
-  It's defined as:
+    It's defined as:
 
-  \begin{equation} \label{eq:hamilton-jacobi}
-    H + \frac{\partial S}{\partial t} = 0
-  \end{equation}
-  
-  With:
-  
-  \begin{itemize}
-    \item $H = H(s_{1}, ..., s_{n}, \frac{\partial S}{\partial s_{1}}, ..., \frac{\partial S}{\partial s_{n}})$
-    \item $S = S(s_{1}, ..., s_{n}, t)$
-  \end{itemize}
-  
-  Where, $s_{i}$, $1 \leq i \leq n$, are the $n$ generalized coordinates in the space and $t$ the time.
+    \begin{equation} \label{eq:hamilton-jacobi}
+      H + \frac{\partial S}{\partial t} = 0
+    \end{equation}
+    
+    With:
+    
+    \begin{itemize}
+      \item $H = H(s_{1}, ..., s_{n}, \frac{\partial S}{\partial s_{1}}, ..., \frac{\partial S}{\partial s_{n}})$
+      \item $S = S(s_{1}, ..., s_{n}, t)$
+    \end{itemize}
+    
+    Where, $s_{i}$, $1 \leq i \leq n$, are the $n$ generalized coordinates in the space and $t$ the time.
+
+  \section{Diffusion spectrum images}
+  Known as DSI, it's the most complex technique for magnet resonance diffusion imaging that provides the most information and details.
+
+  By example, an usual diffusion tensor image (DTI) needs at least 6 different gradients to be obtained, while, in contrast, a DSI needs at least 50 independent gradient sets.
+
+  Yet in this contrast between DTI and DSI, while the first one for each image voxel gives an three-dimensional tensor, the DSI, for each voxel, gives an uncertainty probability distribution for each direction, thus giving much more details and precision for the tractography.
 
 \chapter{References} \label{ch: biblio}
 
