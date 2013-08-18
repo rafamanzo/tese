@@ -113,6 +113,28 @@ To finalize, after dominate both techniques, it'll be possible to make the descr
 
   This dependency to environment adequacy is due to various factors among which the main ones are the data transference to the graphics processor through the PCI bus, besides it's processing cores architecture that were designed to repetitive tasks. It is, conditional branches compromises it's performance.
 
+\chapter{Expected activities}
+Basically, all the described activities in the following sections consist on MedSquare implementations, which, as mentioned before, will be the platform used as basis to the implementations due to it's structure that it already provides.
+
+  \section{DSI reading}
+  The MedSuquare already is capable of reading, among others, resonance images. However, it will be necessary to adapt it's reading structure to recognize a DSI and load.
+
+  \section{Conventional probabilistic tractography implementation}
+  With an loaded DSI, a good way to understand the probabilistic tractography background will be implementing it. Also, the MedSquare will get an robust tractography technique.
+
+  \section{Conventional front evolution implementation}
+  Again, to understand the method background, to implement it is a good path besides of again add a new feature to the MedSquare.
+
+  \section{Front evolution cost function modifications}
+  Understood both the probabilistic tractography and the front evolution, following, will be the moment to take the next step to what should be the differential of this study, joining both approaches.
+
+  One way to do that, can be modifying the front evolution cost function so it takes in consideration the probability distributions. The path to that should be to adjust the cost function to give high costs for high uncertainty paths.
+
+  \section{Practical comparisons between the three techniques}
+  As a consequence, an study of the obtained results for each method with real images, will make possible to assess if the assumption that the union of the two techniques will bring gain on reliability to the tractography.
+
+  \section{Optimization of the modified front evolution}
+  Lastly, to make possible the practical usage of the developed methodology, will be important to optimize it's implementation, if possible with GPGPU.
 \chapter{References} \label{ch: biblio}
 
 \begin{itemize}
