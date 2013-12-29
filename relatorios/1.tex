@@ -5,6 +5,8 @@
 \usepackage[english]{babel}
 \usepackage{amsfonts}
 \usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{subcaption}
 
 \title{Work report from 12/12/2013 to 10/01/2014}
 \author{Rafael Reggiani Manzo}
@@ -17,23 +19,69 @@
 \begin{abstract}
 \end{abstract}
 
-\chapter{Report}
-\section{Previous meeting}
-  \subsection{What was presented}
+\chapter{Previous meeting}
+Here follows a brief recapitulation from our last meeting on 12/12/2013.
 
-  \subsection{Next steps}
+  \section{What was presented}
+  There I've showed a mean diffusivity (MD) threshold mask that was then clustered to eliminate noises. Given that my objective is to identify crossing regions on a given MRI, you've told me that the MD values isn't the tight one to use for this task.
 
-\section{More references}
-This was not part of what we've discussed on our last meeting, but I'm still feeling that I haven't read enough yet. So, I've found three new articles that I'd like to discuss:
+  \section{Next steps}\label{sec:next-steps}
+  Then, you've asked me to create a new threshold mask for fractional anisotropy (FA) values, making sure that I was obtaining the right eigenvalues for that and using the normalized FA equation. With that I'd filter out gray mater regions (FA values lower then 0.2).
 
-\begin{enumerate}
-  \item Probabilistic Monte Carlo Based Mapping of Cerebral Connections Utilising Whole-Brain Crossing Fibre Information. Geoff J. M. Parker, Daniel C. Alexander
-  \item Diffusion Anisotropy Measurement of Brain White Matter Is Affected by Voxel Size: Underestimation Occurs in Areas with Crossing Fibers. H. Oouchi, K. Yamada, K. Sakai, O. Kizu, T. Kubota, H. Ito, T. Nishimura
-  \item Fiber Crossing in Human Brain Depicted with Diffusion Tensor MR Imaging. Mette R. Wiegell, Henrik B. W. Larsson, Van J. Wedeen
-\end{enumerate}
+  Next to that you've asked me to extract other tensor metrics: radial diffusivity (RD); toroidal curvature (TC); and toroidal volume (TV). Then cluster for each one of those obtaining regions for which I'd calculate for each metric again the mean and standard deviation.
 
-The number 1 is probably something really similar to what I'm trying to achieve: a pre-mapping of fiber crossing regions to improve tractography's accuracy on that regions. The main difference is the probabilistic approach that it proposes. It's an article from 2003 with lots of spelling errors, so I'm not sure about it's credibility.
+  Finally, apply all that with the high resolution dataset which you've gave me access to.
 
-The second and third articles were interesting to bring to my mind some aspects of the problem that I haven't thought about before. The article number two shows the FA values, for some brain regions well known as crossing regions, may vary depending on the voxel dimensions. Finally with the number three I've learned that, besides the cases of simple fiber crossing and fiber kissing, there two other cases that I've not considered yet: fiber spreading; and high curvature fibers.
+\chapter{Work done}
+Beyond what was discussed previously (\ref{sec:next-steps}), I wasn't feeling that I've read enough yet. So I've decided to search for more references which I'll enter in details right after this (\ref{sec:more-references}).
+
+Another thing that I've worked really hard but I'll not enter in details here was on the quality of the code I've been producing. So I've covered all the code with unit tests and, as I'm writing pure in Python 3.3, I'm also making sure that the style is following pylint\footnote{Pylint is a tool that inspects Python coding errors, pieces of code too complex and style issues like line length. For more information please visit: \url{http://www.pylint.org/}} directives. Finally, since one of the objectives is to process large amounts of data, I've took precaution to take full advantage of CPU multi threading and memoization techniques.
+
+  \section{More references}\label{sec:more-references}
+  This was not part of what we've discussed on our last meeting, but I'm still feeling that I haven't read enough yet. So, I've found three new articles that I'd like to discuss:
+
+  \begin{enumerate}
+    \item Probabilistic Monte Carlo Based Mapping of Cerebral Connections Utilising Whole-Brain Crossing Fibre Information. Geoff J. M. Parker, Daniel C. Alexander
+    \item Diffusion Anisotropy Measurement of Brain White Matter Is Affected by Voxel Size: Underestimation Occurs in Areas with Crossing Fibers. H. Oouchi, K. Yamada, K. Sakai, O. Kizu, T. Kubota, H. Ito, T. Nishimura
+    \item Fiber Crossing in Human Brain Depicted with Diffusion Tensor MR Imaging. Mette R. Wiegell, Henrik B. W. Larsson, Van J. Wedeen
+  \end{enumerate}
+
+  The number 1 is probably something really similar to what I'm trying to achieve: a pre-mapping of fiber crossing regions to improve tractography's accuracy on that regions. The main difference is the probabilistic approach that it proposes. It's an article from 2003 with lots of spelling errors, so I'm not sure about it's credibility.
+
+  The second and third articles were interesting to bring to my mind some aspects of the problem that I haven't thought about before. The article number two shows the FA values, for some brain regions well known as crossing regions, may vary depending on the voxel dimensions. Finally with the number three I've learned that, besides the cases of simple fiber crossing and fiber kissing, there two other cases that I've not considered yet: fiber spreading; and high curvature fibers.
+
+  \section{Correctness}
+  Besides the mentioned unit tests that were made. I've made some visual confirmations that what I've been calculating and the outputs from that algorithms were correct by comparing with the result obtained from Bio Image Suite (MIG's version).
+
+  \begin{figure}[!ht]
+    \centering
+
+    \begin{subfigure}[t]{.49\textwidth}
+      \includegraphics[width=1\linewidth]{img/bis_fa_threshold.png}
+      \caption{BIS threshold applied to the loaded tensor filtering out voxels with FA values lower than 0.2.}
+      \label{subfig:bis_fa_threshold}
+    \end{subfigure}\hfill%
+    \begin{subfigure}[t]{.49\textwidth}
+      \includegraphics[width=1\linewidth]{img/my_fa_threshold.png}
+      \caption{FA mask that I've generated applied to the loaded tensor on BIS.}
+      \label{subfig:my_fa_threshold}
+    \end{subfigure}
+
+    \caption{Comparison between FA threshold from BIS and the one I've implemented. Both screenshots were taken from the 3-slice view mode at the position (64, 64, 35). As you can see, the results are identical.}
+    \label{fig:bis-my-comparison}
+  \end{figure}
+
+  This kind of comparison exemplified by the figure above (\ref{fig:bis-my-comparison}) were really important to identify mistakes that I've made through the development like not considering the affine transformation from the original files. So, for that case, I was generating the correct mask, but it was not with the same rotations, scales and translations as the original tensor leading to different visual results.
+
+  \section{Clustering}
+    \subsection{FA}
+
+    \subsection{RD}
+
+    \subsection{TC}
+
+    \subsection{TV}
+
+\chapter{Conclusion}
 
 \end{document}
