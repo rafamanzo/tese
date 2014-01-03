@@ -1,0 +1,2 @@
+Region 	 | # Voxels 	 | MD mean   	 | MD std   	 | FA mean  	 | FA std   	 | RD mean  	 | RD std   	 | TV mean  	 | TV std   	 | TC mean  	 | TC std   	 
+    1 	 |   168085 	 | 0.0001473 	 | 0.000053 	 | 0.3933297 	 | 0.1512194 	 | 0.0001154 	 | 0.0000468 	 | 0.0000009 	 | 0.0000000 	 | 0.0000000 	 | 0.0000005 	 

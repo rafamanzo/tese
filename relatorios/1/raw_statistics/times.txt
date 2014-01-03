@@ -1,0 +1,10 @@
+fa_mask 0m59.247s
+fa_mask_statistics 10m49.423
+fa_clustered_fa_mask (0.15) 13m24.782s
+fa_clustered_fa_mask_statistics 3m18.922
+rd_clustered_fa_mask (0.00005) 89m29.007
+rd_clustered_fa_mask_statistics 6m12.551
+tc_clustered_fa_mask (0.0000005) 76m56.386
+tc_clustered_fa_mask_statistics 4m11.423
+tv_clustered_fa_mask (0.00000001) 137m11.281
+tv_clustered_fa_mask_statistics 5m38.443s
