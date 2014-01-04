@@ -8,7 +8,7 @@
 \usepackage{graphicx}
 \usepackage{subcaption}
 
-\title{Work report from 12/12/2013 to 10/01/2014}
+\title{Work report from 12/12/2013 to 03/01/2014}
 \author{Rafael Reggiani Manzo}
 
 \begin{document}
@@ -17,6 +17,9 @@
 \tableofcontents
 
 \begin{abstract}
+  This document is intended to make easier for me to explain on what I've been working on, as well as remembering about last meetings and objectives.
+
+  This time I've computed a lot of tensor statistics from which I tried to extract some information.
 \end{abstract}
 
 \chapter{Previous meeting}
@@ -86,7 +89,7 @@ Another thing that I've worked really hard but I'll not enter in details here wa
        \textbf{Standard Deviation} & 0.000053 & 0.1512194 & 0.0000468 & 0.0000000 & 0.0000005 \\ \hline 
     \end{tabular}
 
-    \subsection{Clustering}
+    \subsection{Clustering}\label{subsec:clustering}
     In order to get closer to identify a pattern to apply the clustering for each tensor metric and then look at their mean and standard deviation.
 
     Beyond the results, following I'll also mention the processing time taken to produce those results. For this I've used a Intel Core i7 with 4 physical cores at 2.3 GHz.
@@ -94,6 +97,8 @@ Another thing that I've worked really hard but I'll not enter in details here wa
     The applied clustering algorithm was DBSCAN with 1 one voxel neighbourhood length and one point was not considered noise if it had at least 26 neighbours.
 
     Generally about all the clustering methods we can see from the distribution of cluster sizes (e.g. \ref{subfig:fa_hist_region}) we can see lots of small clusters and just a few huge clusters (actually two) \footnote{The following statistics will show histograms for this statistic really similar to this one.}. My insight about this is that those small clusters are the interesting ones.
+
+    Another characteristic that was noted is the total number of clusters. The FA and TC clustering yielded almost twice clusters than RD and TV.
 
     \newpage
     \subsubsection{FA}
@@ -264,5 +269,10 @@ Another thing that I've worked really hard but I'll not enter in details here wa
     This type of clusterization grouped voxels with FA values which don't differ no more then 0.00000001 taking 17m29.473s\footnote{Sequential time: 137m11.281s} to get computed and another 6m24.052s\footnote{Sequential time: 5m38.443s} to generate the statistics.
 
 \chapter{Conclusion}
+Most of the statistics, except for the cluster size, doesn't look really meaningful alone. In order to make any affirmations more experiments are necessary involving more datasets so maybe the other statistics may show some kind of pattern that we can explore for the task of identifying fiber crossing regions.
+
+The hypothesis mentioned on \ref{subsec:clustering} that raises the question about the size of crossing regions may be answered with more anatomical knowledge about known crossing regions in the brain or with a well mapped phantom dataset.
+
+So with this knowledge I may be able to compare and see if any of these clusterization methods are getting any closer to map crossing regions and, if so, which of them is the most promising one.
 
 \end{document}
