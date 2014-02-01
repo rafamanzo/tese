@@ -38,30 +38,41 @@ Here follows a brief recapitulation from our last meeting on 08/01/2014.
 \chapter{Work done}
 
   \section{\textit{Corpus callosum} structure}
+  Since I was focusing the work specifically on this region of the brain, I've decided that would be useful to learn more about its anatomy. To do so, I've read the following article about the fibers composing it: \textit{F. Aboitiz, A. B. Scheibel, R. S. Fisher, and E. Zaidel, Fiber composition of the human corpus callosum," Brain Res, vol. 598, pp. 143-53, Dec 1992.}
+
+  After reading there was no knowledge that I could apply right now, but of course it was full of informations about axon diameters, fiber types and for example how the \textit{corpus callosum} is responsible for interhemispheric transfer.
 
   \section{Regions and statistics}
-  The following statistics refer to the high resolution dataset. First I'll present the statistics for the dataset with voxels with FA values under 0.2 which was the base for the clustering which I'll present just after.
+  The following statistics refer to the high resolution dataset with a mask restrained to the \textit{corpus callosum} region with it's fibers expanded using the adaptive Runge-Kutta method.
 
+  First I'll present the statistics for the dataset with voxels with FA values under 0.2 which was the base for the clustering which I'll present just after.
+
+    \newpage
     \subsection{FA threshold}\label{subsec:fa-threshold}
-    After the threshold filter there were 168085 voxels left in the dataset. The time taken to generate the mask was 0m44.868s\footnote{Sequential time: 0m59.247s} and the statistics calculation took 10m41.506s\footnote{Sequential time: 10m49.423s}.
+
+    \begin{figure}[!ht]
+      \includegraphics[width=1\linewidth]{img/regions/whole.png}
+      \caption{3D view of \textit{corpus callosum} with fibers tracked by the adaptive Runge-Kutta algorithm on Bio Image Suite.}
+      \label{fig:whole}
+    \end{figure}
+
+    The image \ref{fig:whole} represents the region for which were extracted the regions below and, afterwards, for which the clustering algorithms were applied.
+
+    After the threshold filter there were 21041 voxels left in the dataset. The time taken to generate the mask was 0m7.496s and the statistics calculation took 1m22.496s.
 
     \begin{tabular}{| c | c | c | c | c | c |}
       \hline
         & \textbf{MD} & \textbf{FA} & \textbf{RD} & \textbf{TV} & \textbf{TC} \\ \hline
-       \textbf{Mean} & 0.0001473 & 0.3933297 & 0.0001154 & 0.0000000 & 0.0000009 \\ \hline
-       \textbf{Standard Deviation} & 0.000053 & 0.1512194 & 0.0000468 & 0.0000000 & 0.0000005 \\ \hline 
+       \textbf{Mean} & 0.0001583 & 0.4651988 & 0.0001146 & 0.0000010 & 0.0000001 \\ \hline
+       \textbf{Standard Deviation} & 0.000025 & 0.1229444 & 0.0000292 & 0.00000001 & 0.0000004 \\ \hline 
     \end{tabular}
 
     \subsection{Clustering}\label{subsec:clustering}
     In order to get closer to identify a pattern to apply the clustering for each tensor metric and then look at their mean and standard deviation.
 
-    Beyond the results, following I'll also mention the processing time taken to produce those results. For this I've used a Intel Core i7 with 4 physical cores at 2.3 GHz.
+    Beyond the results, following I'll also mention the processing time taken to produce those results. For this I've used a Intel Core 2 Due E7400 with 2 physical cores at 2.8 GHz.
 
-    The applied clustering algorithm was DBSCAN with 1 one voxel neighbourhood length and one point was not considered noise if it had at least 26 neighbours.
-
-    Generally about all the clustering methods we can see from the distribution of cluster sizes (e.g. \ref{subfig:fa_hist_region}) we can see lots of small clusters and just a few huge clusters (actually two) \footnote{The following statistics will show histograms for this statistic really similar to this one.}. My insight about this is that those small clusters are the interesting ones.
-
-    Another characteristic that was noted is the total number of clusters. The FA and TC clustering yielded almost twice clusters than RD and TV.
+    The applied clustering algorithm was DBSCAN\footnote{as described in: Domenica Arlia and Massimo Coppola. 2001. Experiments in Parallel Clustering with DBSCAN. In Proceedings of the 7th International Euro-Par Conference Manchester on Parallel Processing (Euro-Par '01), Rizos Sakellariou, John Keane, John R. Gurd, and Len Freeman (Eds.). Springer-Verlag, London, UK, UK, 326-331.} with 1 one voxel neighbourhood length and one point was not considered noise if it had at least 26 neighbours.
 
     \newpage
     \subsubsection{FA}
@@ -103,7 +114,15 @@ Here follows a brief recapitulation from our last meeting on 08/01/2014.
       \label{fig:fa-histograms}
     \end{figure}
 
-    This type of clusterization grouped voxels with FA values which don't differ no more then 0.15 (standard deviation from the entire region \ref{subsec:fa-threshold}) taking 19m32.754s\footnote{Sequential time: 13m24.782s} to get computed and another 3m18.221s\footnote{Sequential time: 3m18.922s} to generate the statistics.
+    This type of clusterization grouped voxels with FA values which don't differ no more then 0.246 (twice the standard deviation from the entire region \ref{subsec:fa-threshold}) taking 8m16.831s to get computed and another 0m25.687s to generate the statistics.
+
+    Those statistics refers to the following colored regions on \ref{fig:fa-regions}.
+
+    \begin{figure}[!ht]
+      \includegraphics[width=1\linewidth]{img/regions/fa_regions.png}
+      \caption{Expanded \textit{corpus callosum} clustered by FA similarity.}
+      \label{fig:fa-regions}
+    \end{figure}
 
     \newpage
     \subsubsection{RD}
@@ -145,7 +164,15 @@ Here follows a brief recapitulation from our last meeting on 08/01/2014.
       \label{fig:fa-histograms}
     \end{figure}
 
-    This type of clusterization grouped voxels with RD values which don't differ no more then 0.00005 (standard deviation from the entire region \ref{subsec:fa-threshold}) taking 17m21.273s\footnote{Sequential time: 89m29.007s} to get computed and another 5m0.552s\footnote{Sequential time: 6m12.551s} to generate the statistics.
+    This type of clusterization grouped voxels with RD values which don't differ no more then 0.000029 (standard deviation from the entire region \ref{subsec:fa-threshold}) taking 7m36.263s to get computed and another 0m33.861s to generate the statistics.
+
+    Those statistics refers to the following colored regions on \ref{fig:rd-regions}.
+
+    \begin{figure}[!ht]
+      \includegraphics[width=1\linewidth]{img/regions/rd_regions.png}
+      \caption{Expanded \textit{corpus callosum} clustered by RD similarity.}
+      \label{fig:rd-regions}
+    \end{figure}
 
     \newpage
     \subsubsection{TC}
@@ -187,7 +214,15 @@ Here follows a brief recapitulation from our last meeting on 08/01/2014.
       \label{fig:fa-histograms}
     \end{figure}
 
-    This type of clusterization grouped voxels with FA values which don't differ no more then 0.0000005 (standard deviation from the entire region \ref{subsec:fa-threshold}) taking 62m17.542s\footnote{Sequential time: 76m56.386s} to get computed and another 4m34.027s\footnote{Sequential time: 4m11.423s} to generate the statistics.
+    This type of clusterization grouped voxels with FA values which don't differ no more then 0.0000004 (standard deviation from the entire region \ref{subsec:fa-threshold}) taking 17m4.241s to get computed and another 0m31.865s to generate the statistics.
+
+    Those statistics refers to the following colored regions on \ref{fig:tc-regions}.
+
+    \begin{figure}[!ht]
+      \includegraphics[width=1\linewidth]{img/regions/tc_regions.png}
+      \caption{Expanded \textit{corpus callosum} clustered by TC similarity.}
+      \label{fig:tc-regions}
+    \end{figure}
 
     \newpage
     \subsubsection{TV}
@@ -229,8 +264,18 @@ Here follows a brief recapitulation from our last meeting on 08/01/2014.
       \label{fig:fa-histograms}
     \end{figure}
 
-    This type of clusterization grouped voxels with FA values which don't differ no more then 0.00000001 taking 17m29.473s\footnote{Sequential time: 137m11.281s} to get computed and another 6m24.052s\footnote{Sequential time: 5m38.443s} to generate the statistics.
+    This type of clusterization grouped voxels with FA values which don't differ no more then 0.00000000001 taking 7m55.727s to get computed and another 0m48.003s to generate the statistics.
 
-\chapter{Conclusion}
+    Those statistics refers to the following colored regions on \ref{fig:tv-regions}.
+
+    \begin{figure}[!ht]
+      \includegraphics[width=1\linewidth]{img/regions/tv_regions.png}
+      \caption{Expanded \textit{corpus callosum} clustered by RD similarity.}
+      \label{fig:tv-regions}
+    \end{figure}
+
+\section{Phantom sketch}
+
+\chapter{Discussion}
 
 \end{document}
