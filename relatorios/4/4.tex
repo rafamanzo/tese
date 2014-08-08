@@ -1,0 +1,31 @@
+\documentclass[a4paper,11pt]{report}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[english]{babel}
+\usepackage{amsfonts}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{float}
+
+\title{Technical report from 08/08/2014 to 15/08/2014}
+\author{Rafael Reggiani Manzo}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\chapter{Previous meeting}
+  \section{What was presented}
+  Last time when we met, I've showed the results that I've achieved on a mask obtained from a fibre tracking with the stopping criteria at angles higher than 60 degrees instead of 45 degrees and then cropped to a small region of interest.
+
+  The results using clustering algorithms showed no visually meaningful results for this small region. But, on the other hand, a implementation of a segmentation algorithm was capable of segmenting the corner region of the region of interest.
+
+  \section{Next steps}
+  From this we agreed that the next steps would be to first produce the maps the three eigenvalues of the tensor ($\lambda_1$, $\lambda_2$, $\lambda_3$), apply the same segmentation algorithm, then apply it to the FA, MD, RD and TV maps.
+
+  After that, produce a prototype that accordingly to difference between the eigenvectors in order to produce a threshold mask. This should be configurable with parameters that may vary from full isotropy to full anisotropy.
+
+\end{document}
