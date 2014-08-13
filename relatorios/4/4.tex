@@ -29,11 +29,36 @@
   After that, produce a prototype that accordingly to difference between the eigenvectors in order to produce a threshold mask. This should be configurable with parameters that may vary from full isotropy to full anisotropy.
 
 \chapter{Work done}
+  All the work expected from the last meeting was done in time as expected.
+
   \section{Eigenvalues differences threshold}
+    Every index that we can extract from a tensor is associated to it's eigenvalues or is a combination of them. So looking at them, instead to derived indexes like FA, should provide more information about the dataset.
+
+    Since the eigenvalues will be object of various discussions ahead we shall clarify that we are referencing the three eigenvalues as $\lambda_1$, $\lambda_2$ and $\lambda_3$ in decreasing order.
+
     \subsection{Procedure}
+    In more details, what we looking for when trying to map uncertainty and certainty on a dataset, is the differences between those values. For example:
+
+    \begin{itemize}
+      \item $\lambda_1 - \lambda_2 = 1.0$ and $\lambda_1 - \lambda_3 = 1.0$ and $\lambda_2 - \lambda_3 = 0.0$ represent what we call full anisotropy or, as we will reference to it later, perfect anisotropy;
+      \item similarly, $\lambda_1 - \lambda_2 = 0.0$ and $\lambda_1 - \lambda_3 = 0.0$ and $\lambda_2 - \lambda_3 = 0.0$ represent what we call full isotropy or, as we will reference to it later, perfect isotropy.
+    \end{itemize}
+
+    Those represent the two kinds of region we are pursuing to map: perfect anisotropy is the most certainty region; and perfect isotropy is the most uncertainty region.
+
+    Given this concept, we must consider that both cases never happen in real datasets. So this brings us a relaxation by a parameter $0 \leq \epsilon \leq 1$ for the expressions previously mentioned:
+
+    \newpage
+    \begin{itemize}
+      \item $1 - \epsilon \leq \lambda_1 - \lambda_2 \leq 1.0$ and $1 - \epsilon \leq \lambda_1 - \lambda_3 \leq 1.0$ and $0.0 \leq \lambda_2 - \lambda_3 \leq \epsilon$;
+      \item $0.0 \leq \lambda_1 - \lambda_2 \leq \epsilon$ and $0.0 \leq \lambda_1 - \lambda_3 \leq \epsilon$ and $0.0 \leq \lambda_2 - \lambda_3 \leq \epsilon$.
+    \end{itemize}
+
+    Then, by increasing the $\epsilon$ step by step we may find a threshold for approximations of perfect anisotropy and isotropy.
+
     \subsection{Results}
-    \subsubsection{Perfect anisotropy and isotropy}
-    \subsubsection{Relaxed perfect anisotropy and isotropy}
+      \subsubsection{Perfect anisotropy and isotropy}
+      \subsubsection{Relaxed perfect anisotropy and isotropy}
 
   \section{Watersheds}
     \subsection{Fractional anisotropy (FA)}
