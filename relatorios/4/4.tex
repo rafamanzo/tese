@@ -37,7 +37,7 @@
     Since the eigenvalues will be object of various discussions ahead we shall clarify that we are referencing the three eigenvalues as $\lambda_1$, $\lambda_2$ and $\lambda_3$ in decreasing order.
 
     \subsection{Procedure}
-    In more details, what we looking for when trying to map uncertainty and certainty on a dataset, is the differences between those values. For example:
+    In more details, what we are looking for when trying to map uncertainty and certainty on a dataset, is the differences between those values. For example:
 
     \begin{itemize}
       \item $\lambda_1 - \lambda_2 = 1.0$ and $\lambda_1 - \lambda_3 = 1.0$ and $\lambda_2 - \lambda_3 = 0.0$ represent what we call full anisotropy or, as we will reference to it later, perfect anisotropy;
@@ -57,8 +57,102 @@
     Then, by increasing the $\epsilon$ step by step we may find a threshold for approximations of perfect anisotropy and isotropy.
 
     \subsection{Results}
-      \subsubsection{Perfect anisotropy and isotropy}
+      \subsubsection{Control experiments}
+      The whole dataset considered for this experiments is:
+
+      \begin{figure}[H]
+        \includegraphics[width=1\linewidth]{imgs/whole.png}
+        \caption{Sagital cut at (70, 70, 48) for the whole mask.}
+        \label{fig:whole}
+      \end{figure}
+
+      This region has the following statistics:
+
+      \begin{tabular}{| c | c | c |}
+        \hline
+        Number of voxels & FA mean & FA Standard Deviation \\ \hline
+        460353 & 0.1964880 & 0.1662012 \\ \hline
+      \end{tabular}
+
+      .\newline
+
+      For comparison purposes, lets first look at a simple FA threshold at 0.2 which should give us just the white matter:
+
+      \begin{figure}[H]
+        \includegraphics[width=1\linewidth]{imgs/fa_02threshold.png}
+        \caption{Sagital cut at (70, 70, 48) for a FA threshold of 0.2.}
+        \label{fig:fa_threshold}
+      \end{figure}
+
+      This region has the following statistics:
+
+      \begin{tabular}{| c | c | c |}
+        \hline
+        Number of voxels & FA mean & FA Standard Deviation \\ \hline
+        166316 & 0.3854053 & 0.1307380 \\ \hline
+      \end{tabular}
+
+      .\newline
+
+      Finally, I first tried to run it with perfect anisotropy and isotropy parameters with no relaxation which produced empty masks for both cases as expected.
+
+      \newpage
+
       \subsubsection{Relaxed perfect anisotropy and isotropy}
+      Then following I've ran the eigenvalues threshold with relaxations first for the perfect anisotropy case producing the following chart:
+
+      \begin{figure}[H]
+        \includegraphics[width=1\linewidth]{imgs/perfect_anisotropy_relaxed_chart.png}
+        \caption{Evolution of the statistics accordingly to the relaxation increase.}
+        \label{fig:perf-ani-chart}
+      \end{figure}
+
+      The first three steps gave really small regions. But for the fourth the region size increased significantly with some loss on the FA mean value:
+
+      \begin{figure}[H]
+        \includegraphics[width=1\linewidth]{imgs/eg_10_10_00_0875.png}
+        \caption{Sagital cut at (70, 70, 48) for a perfect anisotropy threshold relaxed to 0.875.}
+        \label{fig:perf-ani-0875}
+      \end{figure}
+
+      Which looks like like a subset of the FA threshold (\ref{fig:fa_threshold}).
+
+      Next I've repeated the experiment relaxing the threshold for the perfect isotropy case, producing the following statistics:
+
+      \begin{figure}[H]
+        \includegraphics[width=1\linewidth]{imgs/perfect_isotropy_relaxed_chart.png}
+        \caption{Evolution of the statistics accordingly to the relaxation increase.}
+        \label{fig:perf-ani-chart}
+      \end{figure}
+
+      Which we can see the results for each step here:
+
+      \begin{figure}[H]
+        \centering
+
+        \begin{subfigure}[t]{.49\textwidth}
+          \includegraphics[width=1\linewidth]{imgs/eg_00_00_00_00546875.png}
+          \caption{Relaxation at 0.0546875.}
+          \label{subfig:perf-iso-0054}
+        \end{subfigure}\hfill%
+        \begin{subfigure}[t]{.49\textwidth}
+          \includegraphics[width=1\linewidth]{imgs/eg_00_00_00_00625.png}
+          \caption{Relaxation at 0.0625.}
+          \label{subfig:perf-iso-0062}
+        \end{subfigure}\hfill\\
+        \begin{subfigure}[t]{.49\textwidth}
+          \includegraphics[width=1\linewidth]{imgs/eg_00_00_00_0125.png}
+          \caption{Relaxation at 0.125.}
+          \label{subfig:perf-iso-0125}
+        \end{subfigure}\hfill%
+        \begin{subfigure}[t]{.49\textwidth}
+          \includegraphics[width=1\linewidth]{imgs/eg_00_00_00_025.png}
+          \caption{Relaxation at 0.25.}
+          \label{subfig:perf-iso-025}
+        \end{subfigure}
+
+        \caption{Sagital cut at (70, 70, 48) for a perfect isotropy steps}
+      \end{figure}
 
   \section{Watersheds}
     \subsection{Fractional anisotropy (FA)}
