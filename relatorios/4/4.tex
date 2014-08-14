@@ -155,14 +155,69 @@
       \end{figure}
 
   \section{Watersheds}
+    Unfortunately, almost none of the watersheds provided any useful information except for the TV values, but not a lot of information.
+
     \subsection{Fractional anisotropy (FA)}
+    \begin{figure}[H]
+      \includegraphics[width=1\linewidth]{imgs/fa_watersheds.png}
+      \caption{Sagital cut at (70, 70, 48) for FA watersheds.}
+      \label{fig:fa_watersheds}
+    \end{figure}
+
     \subsection{Mean diffusivity (MD)}
+    \begin{figure}[H]
+      \includegraphics[width=1\linewidth]{imgs/md_watersheds.png}
+      \caption{Sagital cut at (70, 70, 48) for MD watersheds.}
+      \label{fig:md_watersheds}
+    \end{figure}
+
     \subsection{Radial diffusivity (RD)}
+    \begin{figure}[H]
+      \includegraphics[width=1\linewidth]{imgs/rd_watersheds.png}
+      \caption{Sagital cut at (70, 70, 48) for RD watersheds.}
+      \label{fig:rd_watersheds}
+    \end{figure}
+
     \subsection{Toroidal Volume (TV)}
+    \begin{figure}[H]
+      \includegraphics[width=1\linewidth]{imgs/tv_watersheds.png}
+      \caption{Sagital cut at (70, 70, 48) for TV watersheds.}
+      \label{fig:tv_watersheds}
+    \end{figure}
+
     \subsection{First eigenvalue ($\lambda_1$)}
+    \begin{figure}[H]
+      \includegraphics[width=1\linewidth]{imgs/e1_watersheds.png}
+      \caption{Sagital cut at (70, 70, 48) for $\lambda_1$ watersheds.}
+      \label{fig:e1_watersheds}
+    \end{figure}
+
     \subsection{Second eigenvalue ($\lambda_2$)}
+    \begin{figure}[H]
+      \includegraphics[width=1\linewidth]{imgs/e2_watersheds.png}
+      \caption{Sagital cut at (70, 70, 48) for $\lambda_2$ watersheds.}
+      \label{fig:e2_watersheds}
+    \end{figure}
+
     \subsection{Third eigenvalue ($\lambda_3$)}
+    \begin{figure}[H]
+      \includegraphics[width=1\linewidth]{imgs/e3_watersheds.png}
+      \caption{Sagital cut at (70, 70, 48) for $\lambda_3$ watersheds.}
+      \label{fig:e3_watersheds}
+    \end{figure}
 
 \chapter{Conclusion}
+Finding certainty regions inside a given dataset is easier than finding uncertainty or that there are four or five times more uncertainty regions than certainty.
 
+A second point to take into consideration is that from this results the image segmentation may look like a dead end. But this amount of segmented regions is exactly what is expected from this algorithm on it's article which mentions that it is necessary to apply region growing algorithms after the segmentation in order to obtain meaningful results.
+
+This is a preview of the application of a region grow algorithm to the FA watersheds (\ref{fig:fa_watersheds}):
+
+\begin{figure}[H]
+  \includegraphics[width=1\linewidth]{imgs/fa_watersheds_01_20_grown.png}
+  \caption{Sagital cut at (70, 70, 48) for FA watersheds grown.}
+  \label{fig:fa_watersheds_grown}
+\end{figure}
+
+Finally one thing that comes to my mind is that, I've mapped 160K voxels as white matter (\ref{fig:fa_threshold}) and that just 40K voxels are certainty regions. Maybe the next step would be to analyse those remaining 120K voxels in detail and apply the region grow watersheds.
 \end{document}
