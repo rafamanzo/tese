@@ -73,4 +73,53 @@
   \end{enumerate}
 \end{frame}
 
+\section{Detection and modeling of non-Gaussian apparent diffusion coefficient profiles in human brain data}
+\begin{frame}
+  \frametitle{}
+  \framesubtitle{}
+
+  \begin{Large}
+  \begin{center}
+  \textbf{Detection and modeling of non-Gaussian apparent diffusion coefficient profiles in human brain data}
+  \end{center}
+  \end{Large}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Base}
+  \framesubtitle{}
+
+  \begin{itemize}
+    \item Consider that on each voxel the diffusion may be described by a probability density function for every possible direction
+    \item So it can be understood as a spheric function
+    \item Spheric functions can be described by the Spheric Harmonic Series
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Voxel classification procedure}
+  \framesubtitle{}
+
+  \begin{enumerate}
+    \item Start truncating the series at order $n = 0$
+    \item Using a hypothesis test check if the order $n$ is as descriptive than the order $n + 2$
+      \begin{itemize}
+        \item If the null hypothesis is rejected, repeat the procedure for $n = n + 2$
+        \item Otherwise, stop and classify the voxel accordingly
+      \end{itemize}
+  \end{enumerate}
+
+  If the series was truncated at\footnote{Odd orders of the series are zero for the tensor image case}:
+  \begin{itemize}
+    \item \textbf{Order 0}: isotropy
+    \item \textbf{Order 2}: Gaussian anisotropy
+    \item \textbf{Order 4} or higher: non-Gaussian anisotropy
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+
+\end{frame}
+  \frametitle{Results}
+  \framesubtitle{}
 \end{document}
